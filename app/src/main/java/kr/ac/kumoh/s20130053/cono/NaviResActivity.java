@@ -1,9 +1,11 @@
 package kr.ac.kumoh.s20130053.cono;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CalendarView;
 import android.widget.Spinner;
@@ -70,6 +72,14 @@ public class NaviResActivity extends AppCompatActivity {
         mDesignerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, mArray);
         mSpinner = findViewById(R.id.nav_res_DesignerSpinner);
         mSpinner.setAdapter(mDesignerAdapter);
+
+        findViewById(R.id.nav_res_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(NaviResActivity.this, NaviCounselingActivity.class));
+                finish();
+            }
+        });
     }
 
     public int getCurrentYear() {
