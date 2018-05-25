@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">동네 미용실</string>
+    <string name="tab_text_1">미용실</string>
+    <string name="tab_text_2">디자이너</string>
+    <string name="tab_text_3">상담</string>
+    <string name="hairshop_select">헤어샵 선택</string>
+    <string name="opt_str_hairshop_change">헤어샵 변경</string>
+    <string name="opt_str_logout">로그아웃</string>
+    <string name="log">이력</string>
+    <string name="reservation">예약</string>
+    <string name="counseling">내 상담</string>
+    <string name="modify_info">회원정보</string>
+    <string name="expenses_by_period">기간별 지출 보기</string>
+    <string name="expenses_by_shop">매장별 지출 보기</string>
+    <string name="hair_history">헤어 히스토리</string>
+    <string name="nav_str_current_info">회원 정보</string>
+    <string name="frag_counseling_comment_commit">작성</string>
+    <string name="frag_counseling_comment_cancel">취소</string>
+    <string name="counseling_write">상담작성</string>
+    <string name="counseling_refresh">새로고침</string>
+    <string name="counseling_write_titleHint">제목을 입력하세요</string>
+    <string name="counseling_write_contentHint">내용을 입력하세요</string>
+    <string name="counseling_write_complete">작성 완료</string>
+    <string name="counseling_delete_complete">삭제 완료</string>
+    <string name="counseling_delete_failure">본인의 글만 삭제가 가능합니다.</string>
+    <string name="dialog_write_failure">덧글을 입력하세요</string>
+    <string name="hairshop_search">헤어샵 검색</string>
+    <string name="isNull">정보 없음</string>
+    <string name="nav_res_day">예약 날짜</string>
+    <string name="nav_res_time">예약 시간</string>
+    <string name="nav_res_designer">헤어 디자이너</string>
+
+
+
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <string name="drawer_open">drawer_open</string>
+    <string name="drawer_close">drawer_close</string>
+
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="title_activity_navi">NaviActivity</string>
+    <string name="title_activity_tab">TabActivity</string>
+    <string name="title_activity_tmp">TMPActivity</string>
+</resources>
+

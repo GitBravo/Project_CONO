@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1050394138750",
+    "firebase_url": "https://cono-bf6c7.firebaseio.com",
+    "project_id": "cono-bf6c7",
+    "storage_bucket": "cono-bf6c7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1050394138750:android:88ef164c826a2f15",
+        "android_client_info": {
+          "package_name": "kr.ac.kumoh.s20130053.cono"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1050394138750-1jr1cr3h21d6hhj42qcj2bkcbc4kbdj7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAP9GdxExJY8PEJy79fm5mXveKNZQBl-9Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

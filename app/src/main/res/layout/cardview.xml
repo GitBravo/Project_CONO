@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    app:cardCornerRadius="5dp"
+    app:cardElevation="5dp"
+    android:layout_margin="3dp"
+
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/cardview_image"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@drawable/a"/>
+
+        <TextView
+            android:id="@+id/cardview_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="홍길동"
+            android:textStyle="bold"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/cardview_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="투블럭 공장장"
+            android:textAlignment="center"/>
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>

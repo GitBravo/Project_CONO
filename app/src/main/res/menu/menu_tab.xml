@@ -1,0 +1,17 @@
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="kr.ac.kumoh.s20130053.cono.TabActivity">
+    <item
+        android:id="@+id/opt_hairshop_change"
+        android:orderInCategory="100"
+        android:title="@string/opt_str_hairshop_change"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/opt_logout"
+        android:orderInCategory="100"
+        android:title="@string/opt_str_logout"
+        app:showAsAction="never" />
+</menu>
