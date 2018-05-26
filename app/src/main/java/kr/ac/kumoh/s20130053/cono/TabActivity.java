@@ -8,6 +8,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -45,6 +46,17 @@ public class TabActivity extends AppCompatActivity {
     private NavigationView navigationView;
 
     @Override
+    public void onBackPressed() {
+        // 드로워레이아웃이 열려있는 상태에서 Back 키 누르면 자동 닫힘
+        mDrawerLayout = findViewById(R.id.drawer);
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            mDrawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navi); // 네비게이션 드로워가 TabActivity 보다 높은 레이어에 위치하기 때문에 activity_tab 을 인플레이션 하지 않음
@@ -52,7 +64,6 @@ public class TabActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // 마지막으로 선택한 미용실 그대로 불러오는 코드 추가후 이 부분은 삭제할 것
         if (hairshop_name != null)
             toolbar.setTitle(hairshop_name); // 선택한 미용실명을 툴바의 텍스트뷰로 출력
         else {
@@ -78,7 +89,7 @@ public class TabActivity extends AppCompatActivity {
                 else if (id == R.id.nav_reservation)
                     startActivity(new Intent(TabActivity.this, NaviResActivity.class));
                 else if (id == R.id.nav_counseling)
-                    startActivity(new Intent(TabActivity.this, NaviCounselingActivity.class));
+                    startActivity(new Intent(TabActivity.this, NaviMyResActivity.class));
                 else if (id == R.id.nav_modify_info)
                     startActivity(new Intent(TabActivity.this, NaviModifyActivity.class));
                 return false;

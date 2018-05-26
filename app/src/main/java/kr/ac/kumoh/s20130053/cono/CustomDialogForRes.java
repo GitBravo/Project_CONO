@@ -17,9 +17,8 @@ import static kr.ac.kumoh.s20130053.cono.MainActivity.hairshop_token;
 import static kr.ac.kumoh.s20130053.cono.SignInActivity.mAuth;
 
 public class CustomDialogForRes extends Dialog {
-    private static final int LAYOUT = R.layout.customdialog_for_res; // 이부분 수정요망
+    private static final int LAYOUT = R.layout.customdialog_for_res;
 
-    // 이 클래스는 아직 아무것도 수정 안했으니 다시 개발할 것
     private Context mContext;
     private TextView mResDayTv;
     private TextView mResTimeTv;
@@ -67,6 +66,7 @@ public class CustomDialogForRes extends Dialog {
                 item.put("date", mResDay);
                 item.put("time", mResTime);
                 item.put("designer", mResDesigner);
+                item.put("document_id", res_id);
                 db.collection("Hairshop").document(hairshop_token).collection("Reservation").document(res_id).set(item); // DB에 삽입
 
                 Toast.makeText(mContext, R.string.nav_res_write_complete, Toast.LENGTH_SHORT).show(); // 성공 알림창 생성

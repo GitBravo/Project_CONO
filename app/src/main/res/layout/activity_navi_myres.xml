@@ -6,11 +6,13 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NaviCounselingActivity">
+    tools:context=".NaviMyResActivity">
 
-    <TextView
+    <ListView
+        android:id="@+id/nav_res_myres_listview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="내가 올린 상담글을 보여주는부분"/>
+        android:layout_height="match_parent">
+
+    </ListView>
 
 </LinearLayout>

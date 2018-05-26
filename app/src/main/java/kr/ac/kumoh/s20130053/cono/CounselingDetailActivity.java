@@ -90,7 +90,7 @@ public class CounselingDetailActivity extends AppCompatActivity implements View.
                 mId = findViewById(R.id.frag_counseling_detail_id);
                 // 본인이 작성한 글일 경우 삭제 수행
                 if (mId.getText().equals(mAuth.getCurrentUser().getEmail())) {
-                    db.collection("Comment").document(mCommentId)
+                    db.collection("Hairshop").document(hairshop_token).collection("Comment").document(mCommentId)
                             .delete()
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override

@@ -29,7 +29,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".NaviLogActivity" />
         <activity android:name=".NaviResActivity" />
-        <activity android:name=".NaviCounselingActivity" />
+        <activity android:name=".NaviMyResActivity" />
         <activity android:name=".NaviModifyActivity" />
         <activity android:name=".CounselingDetailActivity" />
         <activity android:name=".CounselingWriteActivity" />

@@ -33,7 +33,7 @@ public class FragmentCounseling extends android.support.v4.app.Fragment implemen
         FloatingActionButton btn_left = rootView.findViewById(R.id.frag_counseling_write); // 상담 작성 버튼액션
         btn_left.setOnClickListener(this);
 
-        mAdapter = new MyCustomAdapter(rootView.getContext(), R.layout.customlist);
+        mAdapter = new MyCustomAdapter(rootView.getContext(), R.layout.customlist_for_counseling);
         mList = rootView.findViewById(R.id.frag_counseling_list);
         mList.setAdapter(mAdapter);
         mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -135,7 +135,7 @@ public class FragmentCounseling extends android.support.v4.app.Fragment implemen
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
             ViewHolder vh;
             if (convertView == null) {
-                convertView = inf.inflate(R.layout.customlist, parent, false);
+                convertView = inf.inflate(R.layout.customlist_for_counseling, parent, false);
                 vh = new ViewHolder();
                 vh.TextView_1 = convertView.findViewById(R.id.custom_TextView1);
                 vh.TextView_2 = convertView.findViewById(R.id.custom_TextView2);
