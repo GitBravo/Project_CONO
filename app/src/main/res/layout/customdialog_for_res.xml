@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/nav_res_dialog"
+    android:orientation="vertical"
+    android:layout_width="300sp"
+    android:layout_height="400sp"
+
+    android:layout_marginBottom="@dimen/activity_vertical_margin"
+    android:layout_marginEnd="@dimen/activity_horizontal_margin"
+    android:layout_marginStart="@dimen/activity_horizontal_margin"
+    android:layout_marginTop="@dimen/activity_vertical_margin">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@drawable/done"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:text="@string/nav_res_isReal"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/nav_res_day"
+            />
+
+        <TextView
+            android:id="@+id/dialog_res_day"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="null"
+            android:textColor="#000"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/nav_res_time"
+            />
+
+        <TextView
+            android:id="@+id/dialog_res_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="null"
+            android:textColor="#000"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/nav_res_designer"
+            />
+
+        <TextView
+            android:id="@+id/dialog_res_designer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="null"
+            android:textColor="#000"
+            />
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/dialog_res_detail_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:text="@string/reservation"/>
+
+
+</LinearLayout>
