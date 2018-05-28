@@ -20,7 +20,7 @@
             android:id="@+id/cardview_image"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:src="@drawable/a"/>
+            android:src="@drawable/default_designer_image"/>
 
         <TextView
             android:id="@+id/cardview_title"

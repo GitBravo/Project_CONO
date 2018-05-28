@@ -57,7 +57,7 @@ public class NaviResActivity extends AppCompatActivity {
                 if(year < getCurrentYear()
                         || (year == getCurrentYear() && month+1 < getCurrentMonth()
                         || (year == getCurrentYear() && month+1 == getCurrentMonth() && dayOfMonth < getCurrentDay()))) {
-                    // 예약이 불가능한 경우
+                    // 예약이 불가능한 경우 -> 예약 불가 표시후 버튼 비활성화
                     mTextView.setText(year + "." + (month + 1) + "." + dayOfMonth);
                     TextView undone_tv = findViewById(R.id.nav_res_undone);
                     TextView done_tv = findViewById(R.id.nav_res_done);
@@ -65,7 +65,7 @@ public class NaviResActivity extends AppCompatActivity {
                     undone_tv.setVisibility(View.VISIBLE); // 예약 불가 표시
                     res_btn.setEnabled(false);
                 }else{
-                    // 예약이 가능한 경우
+                    // 예약이 가능한 경우 -> 예약 가능 표시후 버튼 활성화
                     mTextView.setText(year + "." + (month + 1) + "." + dayOfMonth);
                     TextView undone_tv = findViewById(R.id.nav_res_undone);
                     TextView done_tv = findViewById(R.id.nav_res_done);
@@ -77,7 +77,7 @@ public class NaviResActivity extends AppCompatActivity {
             }
         });
 
-        // DB 로부터 디자이너 정보 획득
+        // DB 로부터 디자이너 정보 획득하여 Spinner 에 할당
         mArray = new ArrayList<>();
         db.collection("Hairshop").document(hairshop_token).collection("Designer").get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
