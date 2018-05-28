@@ -19,7 +19,6 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import static kr.ac.kumoh.s20130053.cono.MainActivity.db;
 import static kr.ac.kumoh.s20130053.cono.MainActivity.hairshop_name;
@@ -39,6 +38,11 @@ public class NaviResActivity extends AppCompatActivity {
     private Button res_btn;
     private CustomDialogForRes dialog;
 
+    private TextView undone_tv;
+    private TextView done_tv;
+
+    private Date date;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,34 +50,33 @@ public class NaviResActivity extends AppCompatActivity {
         if (hairshop_name != null)
             getSupportActionBar().setTitle(hairshop_name);
 
+        date = new Date(); // 현재 날짜 추출 및 비교하는 클래스
+
         mTextView = findViewById(R.id.nav_res_day);
-        mTextView.setText(getCurrentYear()+"."+getCurrentMonth()+"."+getCurrentDay()); // 기본 날짜값 => 현재 날짜
+        mTextView.setText(date.getCurrentYear()+"."+date.getCurrentMonth()+"."+date.getCurrentDay()); // 기본 날짜값 => 현재 날짜
 
         mCalendarView = findViewById(R.id.nav_res_calendarView);
         mCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, final int year, final int month, final int dayOfMonth) {
                 mTextView = findViewById(R.id.nav_res_day);
-                if(year < getCurrentYear()
-                        || (year == getCurrentYear() && month+1 < getCurrentMonth()
-                        || (year == getCurrentYear() && month+1 == getCurrentMonth() && dayOfMonth < getCurrentDay()))) {
-                    // 예약이 불가능한 경우 -> 예약 불가 표시후 버튼 비활성화
+                if(date.isOverdue(year, month + 1, dayOfMonth) || mArray.isEmpty()) {
+                    // 예약이 불가능한 경우 -> 버튼 비활성화
                     mTextView.setText(year + "." + (month + 1) + "." + dayOfMonth);
-                    TextView undone_tv = findViewById(R.id.nav_res_undone);
-                    TextView done_tv = findViewById(R.id.nav_res_done);
+                    undone_tv = findViewById(R.id.nav_res_undone);
+                    done_tv = findViewById(R.id.nav_res_done);
                     done_tv.setVisibility(View.GONE); // 예약 가능 숨기기
                     undone_tv.setVisibility(View.VISIBLE); // 예약 불가 표시
                     res_btn.setEnabled(false);
                 }else{
-                    // 예약이 가능한 경우 -> 예약 가능 표시후 버튼 활성화
+                    // 예약이 가능한 경우 -> 버튼 활성화
                     mTextView.setText(year + "." + (month + 1) + "." + dayOfMonth);
-                    TextView undone_tv = findViewById(R.id.nav_res_undone);
-                    TextView done_tv = findViewById(R.id.nav_res_done);
+                    undone_tv = findViewById(R.id.nav_res_undone);
+                    done_tv = findViewById(R.id.nav_res_done);
                     done_tv.setVisibility(View.VISIBLE); // 예약 가능 표시
                     undone_tv.setVisibility(View.GONE); // 예약 불가 숨기기
                     res_btn.setEnabled(true);
                 }
-
             }
         });
 
@@ -88,6 +91,14 @@ public class NaviResActivity extends AppCompatActivity {
                                 mArray.add(String.valueOf(document.getData().get("name")));
                             }
                             mDesignerAdapter.notifyDataSetChanged(); // 데이터가 추가가 끝날 때 리스트뷰 갱신
+                            if (mArray.isEmpty()) {
+                                // 만약 디자이너 목록을 가져올 수 없다면
+                                res_btn.setEnabled(false); // 예약 버튼 비활성화
+                                undone_tv = findViewById(R.id.nav_res_undone);
+                                done_tv = findViewById(R.id.nav_res_done);
+                                done_tv.setVisibility(View.GONE); // 예약 불가능 표시
+                                undone_tv.setVisibility(View.VISIBLE); // 예약 가능 숨기기
+                            }
                         } else
                             Log.d("TAG", "Error getting documents: ", task.getException());
                     }
@@ -124,23 +135,5 @@ public class NaviResActivity extends AppCompatActivity {
                 });
             }
         });
-    }
-
-    // 현재 년 값 추출 메소드
-    public int getCurrentYear() {
-        Calendar cal = Calendar.getInstance();
-        return cal.get(cal.YEAR);
-    }
-
-    // 현재 월 값 추출 메소드
-    public int getCurrentMonth() {
-        Calendar cal = Calendar.getInstance();
-        return cal.get(cal.MONTH) + 1;
-    }
-
-    // 현재 일 값 추출 메소드
-    public int getCurrentDay() {
-        Calendar cal = Calendar.getInstance();
-        return cal.get(cal.DATE);
     }
 }

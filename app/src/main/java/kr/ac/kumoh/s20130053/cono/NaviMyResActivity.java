@@ -128,6 +128,14 @@ public class NaviMyResActivity extends AppCompatActivity{
                     Toast.makeText(mContext, R.string.nav_res_delete_complete, Toast.LENGTH_SHORT).show(); // 삭제 성공 알림창 생성
                 }
             });
+
+            // 만약 예약 날짜가 지났다면 취소버튼 비활성화
+            Date date = new Date();
+            int[] intDate = date.getIntegerDate(textView1.getText().toString());
+            if(date.isOverdue(intDate[0],intDate[1],intDate[2]))
+                delete_btn.setEnabled(false);
+            else
+                delete_btn.setEnabled(true);
             return v;
         }
     }

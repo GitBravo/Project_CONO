@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     // EditText 를 통해 리스트뷰를 검색하기 위한 레퍼런스 선언
     private ArrayList<String> mBackupArray = null; // 리스트뷰 백업용
+    private ArrayList<String> mBackupToken = null; // 토큰 백업용
     private EditText editText;
 
     @Override
@@ -57,8 +58,11 @@ public class MainActivity extends AppCompatActivity {
                             }
                             mAdapter.notifyDataSetChanged(); // 데이터가 추가가 끝날 때 리스트뷰 갱신
 
-                            mBackupArray = new ArrayList<>(); // 검색 기능 구현을 위한 ArrayList 백업 생성
+                            mBackupArray = new ArrayList<>(); // 검색 기능 구현을 위한 Array 백업 생성
                             mBackupArray.addAll(mArray);
+
+                            mBackupToken = new ArrayList<>(); // 검색 기능 구현을 위한 Token 백업 생성
+                            mBackupToken.addAll(mToken);
                         } else
                             Log.d("TAG", "Error getting documents: ", task.getException());
                     }
@@ -108,14 +112,19 @@ public class MainActivity extends AppCompatActivity {
 
     public void Search(String searchText) {
         searchText = searchText.toLowerCase(); // 입력된 문자를 소문자로 변환
-        mArray.clear(); // 문자 입력시마다 리스트를 지우고 새로 뿌려준다.
-        if (searchText.length() == 0) // 문자 입력이 없을 때는 모든 데이터를 보여준다.
+        // 문자 입력시마다 리스트를 지우고 새로 뿌려준다.
+        mArray.clear();
+        mToken.clear();
+        if (searchText.length() == 0) { // 문자 입력이 없을 때는 모든 데이터를 보여준다.
             mArray.addAll(mBackupArray);
+            mToken.addAll(mBackupToken);
+        }
         else { // 문자 입력이 있을 때
             for (int i = 0; i < mBackupArray.size(); i++) { // 리스트의 모든 데이터를 검색한다.
-                if (mBackupArray.get(i).toLowerCase().contains(searchText)) {
-                    // mSearchArray의 모든 데이터에 입력받은 단어(searchText)가 포함되어 있으면 true를 반환한다.
-                    mArray.add(mBackupArray.get(i)); // 검색된 데이터를 리스트에 추가한다.
+                if (mBackupArray.get(i).toLowerCase().contains(searchText)) { // mSearchArray의 모든 데이터에 입력받은 단어(searchText)가 포함되어 있으면 true를 반환한다.
+                    // 검색된 데이터를 리스트에 추가한다.
+                    mArray.add(mBackupArray.get(i));
+                    mToken.add(mBackupToken.get(i));
                 }
             }
         }
