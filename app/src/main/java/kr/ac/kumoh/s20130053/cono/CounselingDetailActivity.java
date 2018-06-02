@@ -4,9 +4,12 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +34,8 @@ public class CounselingDetailActivity extends AppCompatActivity implements View.
     private ArrayList<String> mArray = null;
     private ListView mList = null;
     private ArrayAdapter<String> mAdapter = null;
+
+    private ScrollView scrollView;
 
     /* Fragment -> Detail 로 보내주는 데이터는 총 5가지
      * 1. commentID
@@ -66,10 +71,23 @@ public class CounselingDetailActivity extends AppCompatActivity implements View.
         mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, mArray);
         mList = findViewById(R.id.frag_counseling_detail_list);
         mList.setAdapter(mAdapter);
+        mList.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                // 리스트뷰에 터치 이벤트를 발생시키면 상위 레이아웃인 스크롤뷰의 터치 이벤트를 중지
+                scrollView = findViewById(R.id.scrollView);
+                scrollView.requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
 
         // 리스너 부착
         findViewById(R.id.frag_counseling_detail_btn_comment).setOnClickListener(this);
         findViewById(R.id.frag_counseling_detail_btn_delete).setOnClickListener(this);
+
+        // DB에 저장된 이미지 불러오는 코드
+        FirestoreImageLoader firestoreImageLoader = new FirestoreImageLoader(this, (ImageView) findViewById(R.id.frag_counseling_detail_imageView));
+        firestoreImageLoader.ImageLoad();
     }
 
     @Override
