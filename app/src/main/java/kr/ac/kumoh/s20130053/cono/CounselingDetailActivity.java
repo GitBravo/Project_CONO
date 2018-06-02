@@ -32,6 +32,9 @@ public class CounselingDetailActivity extends AppCompatActivity implements View.
     private ListView mList = null;
     private ArrayAdapter<String> mAdapter = null;
 
+//    private FirebaseStorage storage;
+
+
     /* Fragment -> Detail 로 보내주는 데이터는 총 5가지
     * 1. commentID
     * 2. title
@@ -70,6 +73,15 @@ public class CounselingDetailActivity extends AppCompatActivity implements View.
         // 리스너 부착
         findViewById(R.id.frag_counseling_detail_btn_comment).setOnClickListener(this);
         findViewById(R.id.frag_counseling_detail_btn_delete).setOnClickListener(this);
+
+//        // Storage 에 저장된 사진을 불러오기 위한 Firebase 인스턴스 선언
+//        storage = FirebaseStorage.getInstance();
+//
+//        StorageReference storageRef = storage.getReference(); // Create a storage reference from our app
+//        StorageReference pathReference = storageRef.child("images/stars.jpg"); // Create a reference with an initial file path and name
+//        StorageReference gsReference = storage.getReferenceFromUrl("gs://cono-bf6c7.appspot.com/comment_image/icon.png"); // Create a reference to a file from a Google Cloud Storage URI
+//        StorageReference httpsReference = storage.getReferenceFromUrl("https://firebasestorage.googleapis.com/b/bucket/o/images%20stars.jpg"); // Create a reference from an HTTPS URL. Note that in the URL, characters are URL escaped!
+
     }
 
     @Override
