@@ -37,6 +37,13 @@
             android:text="@string/frag_counseling_comment_cancel"/>
 
         <Button
+            android:id="@+id/frag_counseling_write_center_btn"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/frag_counseling_comment_ImageAdd"/>
+
+        <Button
             android:id="@+id/frag_counseling_write_right_btn"
             android:layout_width="0dp"
             android:layout_weight="1"

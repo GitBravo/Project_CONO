@@ -16,6 +16,7 @@
     <string name="nav_str_current_info">회원 정보</string>
     <string name="frag_counseling_comment_commit">작성</string>
     <string name="frag_counseling_comment_cancel">취소</string>
+    <string name="frag_counseling_comment_ImageAdd">사진첨부</string>
     <string name="counseling_write">상담작성</string>
     <string name="counseling_refresh">새로고침</string>
     <string name="counseling_write_titleHint">제목을 입력하세요</string>
@@ -35,14 +36,10 @@
     <string name="nav_res_delete_complete">예약 취소완료</string>
     <string name="nav_res_isReal">정말 예약하시겠습니까?</string>
     <string name="default_date_value">2000.1.1</string>
-
-    <string name="drawer_open">drawer_open</string>
-    <string name="drawer_close">drawer_close</string>
-
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-
+    <string name="drawer_open">네비게이션 열기</string>
+    <string name="drawer_close">네비게이션 닫기</string>
+    <string name="nav_header_title">미용실 정보 없음</string>
+    <string name="nav_header_subtitle">계정 정보 없음</string>
     <string name="title_activity_navi">NaviActivity</string>
     <string name="title_activity_tab">TabActivity</string>
     <string name="title_activity_tmp">TMPActivity</string>

@@ -66,7 +66,7 @@ public class CounselingDetailActivity extends AppCompatActivity implements View.
         mContent = findViewById(R.id.frag_counseling_detail_content);
         mContent.setText(bundle.getString("Scontent"));
 
-        // DB에 저장된 댓글 불러오는 코드
+        // FireStore 에 저장된 댓글 불러오는 코드
         mArray = new ArrayList<>();
         mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, mArray);
         mList = findViewById(R.id.frag_counseling_detail_list);
@@ -81,13 +81,12 @@ public class CounselingDetailActivity extends AppCompatActivity implements View.
             }
         });
 
+        // FireStorage 에 저장된 이미지 불러오는 코드. (context, ImageView, CommentID)를 인수로 받아 해당 게시글에 맞는 사진을 불러온다.
+        new FirestoreImageManager().imageDownload(this, (ImageView) findViewById(R.id.frag_counseling_detail_imageView), mCommentId);
+
         // 리스너 부착
         findViewById(R.id.frag_counseling_detail_btn_comment).setOnClickListener(this);
         findViewById(R.id.frag_counseling_detail_btn_delete).setOnClickListener(this);
-
-        // DB에 저장된 이미지 불러오는 코드
-        FirestoreImageLoader firestoreImageLoader = new FirestoreImageLoader(this, (ImageView) findViewById(R.id.frag_counseling_detail_imageView));
-        firestoreImageLoader.ImageLoad();
     }
 
     @Override
@@ -108,6 +107,7 @@ public class CounselingDetailActivity extends AppCompatActivity implements View.
                 mId = findViewById(R.id.frag_counseling_detail_id);
                 // 본인이 작성한 글일 경우 삭제 수행
                 if (mId.getText().equals(mAuth.getCurrentUser().getEmail())) {
+                    // FireStore 제거
                     db.collection("Hairshop").document(hairshop_token).collection("Comment").document(mCommentId)
                             .delete()
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -122,6 +122,10 @@ public class CounselingDetailActivity extends AppCompatActivity implements View.
                                     Log.w("TAG", "Error deleting document", e);
                                 }
                             });
+
+                    // FireStorage 제거
+                    new FirestoreImageManager().imageDelete(mCommentId);
+
                     Toast.makeText(this, R.string.counseling_delete_complete, Toast.LENGTH_SHORT).show();
                     finish();
                 } else {
