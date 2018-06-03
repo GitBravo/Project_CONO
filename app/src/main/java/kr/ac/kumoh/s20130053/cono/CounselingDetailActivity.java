@@ -82,7 +82,7 @@ public class CounselingDetailActivity extends AppCompatActivity implements View.
         });
 
         // FireStorage 에 저장된 이미지 불러오는 코드. (context, ImageView, CommentID)를 인수로 받아 해당 게시글에 맞는 사진을 불러온다.
-        new FirestoreImageManager().imageDownload(this, (ImageView) findViewById(R.id.frag_counseling_detail_imageView), mCommentId);
+        new FirestorageImageManager().imageDownload(this, (ImageView) findViewById(R.id.frag_counseling_detail_imageView), mCommentId);
 
         // 리스너 부착
         findViewById(R.id.frag_counseling_detail_btn_comment).setOnClickListener(this);
@@ -124,7 +124,7 @@ public class CounselingDetailActivity extends AppCompatActivity implements View.
                             });
 
                     // FireStorage 제거
-                    new FirestoreImageManager().imageDelete(mCommentId);
+                    new FirestorageImageManager().imageDelete(mCommentId);
 
                     Toast.makeText(this, R.string.counseling_delete_complete, Toast.LENGTH_SHORT).show();
                     finish();

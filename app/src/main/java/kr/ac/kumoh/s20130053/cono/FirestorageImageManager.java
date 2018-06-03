@@ -11,13 +11,13 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-public class FirestoreImageManager {
+public class FirestorageImageManager {
     private FirebaseStorage storage;
     private StorageReference storageRef;
     private StorageReference targetRef;
     private UploadTask uploadTask;
 
-    public FirestoreImageManager() {
+    public FirestorageImageManager() {
         // Firestorage 객체 할당
         storage = FirebaseStorage.getInstance();
         storageRef = storage.getReference();

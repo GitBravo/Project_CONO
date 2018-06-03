@@ -76,20 +76,21 @@
             android:layout_marginBottom="@dimen/activity_vertical_margin">
 
             <Button
-                android:id="@+id/frag_counseling_detail_btn_comment"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:text="덧글작성" />
-
-            <Button
                 android:id="@+id/frag_counseling_detail_btn_delete"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:text="글 삭제" />
+
+            <Button
+                android:id="@+id/frag_counseling_detail_btn_comment"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:theme="@style/MaterialFlatButton"
+                android:text="덧글작성" />
 
         </LinearLayout>
 

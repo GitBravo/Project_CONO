@@ -96,7 +96,7 @@ public class CounselingWriteActivity extends AppCompatActivity implements View.O
 
                     // 사진 파일 첨부되었다면, Firestorage 사진 파일 저장
                     if(uri != null)
-                        new FirestoreImageManager().imageUpload(comment_id, uri);
+                        new FirestorageImageManager().imageUpload(comment_id, uri);
 
                     Toast.makeText(this, R.string.counseling_write_complete, Toast.LENGTH_SHORT).show();
                     finish();
