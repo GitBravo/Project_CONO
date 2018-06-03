@@ -40,11 +40,12 @@ public class Date {
         return new int[]{year, month, dayOfMonth};
     }
 
-    public boolean CompareLatestDate(int[] date1, int[] date2){
-        // date1가 최신 날짜일 때 true 반환
-        if(date1[0] > date2[0]
-                || (date1[0] > date2[0] && date1[1] > date2[1])
-                || (date1[0] > date2[0] && date1[1] > date2[1] && date1[2] > date2[2]))
+    public boolean CompareLatestDate(String oldDate, String newDate){
+        int []new_IntDate = getIntegerDate(newDate);
+        int []old_IntDate = getIntegerDate(oldDate);
+        if(old_IntDate[0] < new_IntDate[0]
+                || (old_IntDate[0] == new_IntDate[0] && old_IntDate[1] < new_IntDate[1])
+                || (old_IntDate[0] == new_IntDate[0] && old_IntDate[1] == new_IntDate[1] && old_IntDate[2] < new_IntDate[2]))
             return true;
         else
             return false;

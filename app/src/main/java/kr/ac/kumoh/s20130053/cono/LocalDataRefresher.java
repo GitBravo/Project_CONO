@@ -76,6 +76,19 @@ public class LocalDataRefresher {
                                         String.valueOf(document.getData().get("content")),
                                         String.valueOf(document.getData().get("comment_id"))));
                             }
+                            // 날짜순으로 리스트 갱신
+                            Date date = new Date();
+                            FragmentCounseling.ListData tmp;
+                            for (int i = 0 ; i < lArray.size() - 1 ; i ++){
+                                for (int j = i + 1 ; j < lArray.size() ; j ++){
+                                    if (date.CompareLatestDate(lArray.get(i).getTimestamp(), lArray.get(j).getTimestamp())) {
+                                        tmp = lArray.get(i);
+                                        lArray.set(i, lArray.get(j));
+                                        lArray.set(j, tmp);
+                                    }
+                                }
+                            }
+
                             lAdapter.notifyDataSetChanged(); // 데이터가 추가가 끝날 때 리스트뷰 갱신
                         } else
                             Log.d("TAG", "Error getting documents: ", task.getException());
