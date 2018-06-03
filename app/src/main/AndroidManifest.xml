@@ -14,31 +14,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".SignInActivity"
-            android:theme="@style/AppTheme.Signin_Theme">
+            android:name=".SplashActivity"
+            android:theme="@style/AppTheme.FULL_SCREEN">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+        <activity android:name=".SignInActivity"/>
         <activity
             android:name=".MainActivity"
-            android:label="@string/hairshop_select"
-            android:theme="@style/AppTheme.MainTheme" />
+            android:label="@string/hairshop_select"/>
         <activity
             android:name=".TabActivity"
-            android:label="@string/title_activity_tab"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.TabTheme" />
         <activity android:name=".NaviLogActivity" />
         <activity android:name=".NaviResActivity" />
         <activity android:name=".NaviMyResActivity" />
         <activity android:name=".NaviModifyActivity" />
         <activity android:name=".CounselingDetailActivity" />
         <activity android:name=".CounselingWriteActivity" />
-        <activity
-            android:name=".SplashActivity"
-            android:theme="@style/AppTheme.Signin_Theme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>

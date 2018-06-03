@@ -31,7 +31,7 @@ public class SignInActivity extends AppCompatActivity {
                                     new AuthUI.IdpConfig.EmailBuilder().build(), // 이메일 인증
                                     new AuthUI.IdpConfig.GoogleBuilder().build())) // 구글 인증
                             .setLogo(R.drawable.title_image)
-                            .setTheme(R.style.AppTheme_Signin_Theme)
+                            .setTheme(R.style.AppTheme_FULL_SCREEN)
                             .build(),
                     RC_SIGN_IN);
         }
