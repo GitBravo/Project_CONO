@@ -12,16 +12,16 @@
         android:id="@+id/nav_res_calendarView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginEnd="30dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="20dp">
+>
 
         <TextView
             android:layout_width="match_parent"
@@ -39,8 +39,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/default_date_value"
                 android:textSize="25sp"
-                android:textColor="#000"
-                android:layout_marginBottom="15dp"/>
+                android:textColor="#000" />
 
             <TextView
                 android:id="@+id/nav_res_undone"
@@ -69,8 +68,7 @@
         <Spinner
             android:id="@+id/nav_res_TimeSpinner"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginBottom="15dp">
+            android:layout_height="40dp">
         </Spinner>
 
         <TextView
@@ -81,8 +79,7 @@
         <Spinner
             android:id="@+id/nav_res_DesignerSpinner"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginBottom="15dp">
+            android:layout_height="40dp">
         </Spinner>
 
         <Button
