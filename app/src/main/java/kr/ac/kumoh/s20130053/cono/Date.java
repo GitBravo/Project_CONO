@@ -32,11 +32,21 @@ public class Date {
     }
 
     public int[] getIntegerDate(String date){
-        // ex) 2018.5.31 등의 문자열 날짜를 "." 을 기준으로 분할해서 정수배열(year, month, dayOfMonth)로 반환
+        // ex) 2018.5.31 등의 문자열 날짜를 ".", "-" 을 기준으로 분할해서 정수배열(year, month, dayOfMonth)로 반환
         String[] strings = date.split("[.]");
         int year = Integer.valueOf(strings[0]);
         int month = Integer.valueOf(strings[1]);
         int dayOfMonth = Integer.valueOf(strings[2]);
         return new int[]{year, month, dayOfMonth};
+    }
+
+    public boolean CompareLatestDate(int[] date1, int[] date2){
+        // date1가 최신 날짜일 때 true 반환
+        if(date1[0] > date2[0]
+                || (date1[0] > date2[0] && date1[1] > date2[1])
+                || (date1[0] > date2[0] && date1[1] > date2[1] && date1[2] > date2[2]))
+            return true;
+        else
+            return false;
     }
 }
