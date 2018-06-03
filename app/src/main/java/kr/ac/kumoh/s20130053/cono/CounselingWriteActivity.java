@@ -107,7 +107,7 @@ public class CounselingWriteActivity extends AppCompatActivity implements View.O
 
     public String getTimestamp() {
         long time = System.currentTimeMillis();
-        SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat dayTime = new SimpleDateFormat("yyyy.MM.dd");
         String str = dayTime.format(new Date(time));
         return str;
     }
