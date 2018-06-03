@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +17,7 @@ import java.util.ArrayList;
 
 import static kr.ac.kumoh.s20130053.cono.MainActivity.hairshop_token;
 
-public class FragmentCounseling extends android.support.v4.app.Fragment implements View.OnClickListener {
+public class FragmentCounseling extends android.support.v4.app.Fragment {
     public static ArrayList<ListData> mArray = null;
     public static MyCustomAdapter mAdapter = null;
     private ListView mList = null;
@@ -30,9 +29,6 @@ public class FragmentCounseling extends android.support.v4.app.Fragment implemen
         rootView = inflater.inflate(R.layout.fragment_counseling, container, false);
 
         mArray = new ArrayList<>();
-        FloatingActionButton btn_left = rootView.findViewById(R.id.frag_counseling_write); // 상담 작성 버튼액션
-        btn_left.setOnClickListener(this);
-
         mAdapter = new MyCustomAdapter(rootView.getContext(), R.layout.customlist_for_counseling);
         mList = rootView.findViewById(R.id.frag_counseling_list);
         mList.setAdapter(mAdapter);
@@ -62,15 +58,6 @@ public class FragmentCounseling extends android.support.v4.app.Fragment implemen
     public void onResume() {
         super.onResume();
         new LocalDataRefresher(mArray, mAdapter).TryCommentRefresh(hairshop_token); // 상담글 갱신
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.frag_counseling_write:
-                startActivity(new Intent(getContext(), CounselingWriteActivity.class));
-                break;
-        }
     }
 
     // ListData 클래스는 FragmentCounseling 내부의 ListView 에 들어갈 데이터를 정의한다.

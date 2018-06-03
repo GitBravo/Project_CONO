@@ -3,6 +3,7 @@ package kr.ac.kumoh.s20130053.cono;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -24,7 +25,7 @@ import android.widget.TextView;
 import static kr.ac.kumoh.s20130053.cono.MainActivity.hairshop_name;
 import static kr.ac.kumoh.s20130053.cono.SignInActivity.mAuth;
 
-public class TabActivity extends AppCompatActivity {
+public class TabActivity extends AppCompatActivity implements View.OnClickListener {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -71,6 +72,10 @@ public class TabActivity extends AppCompatActivity {
             finish();
         }
 
+        // 플로팅 액션버튼
+        FloatingActionButton fab = findViewById(R.id.frag_counseling_write); // 상담 작성 버튼액션
+        fab.setOnClickListener(this);
+
         // 여기서부터 네비게이션 드로워레이아웃 및 토글버튼 초기화 코드
         mDrawerLayout = findViewById(R.id.drawer);
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_open, R.string.drawer_close);
@@ -116,6 +121,15 @@ public class TabActivity extends AppCompatActivity {
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.frag_counseling_write:
+                startActivity(new Intent(this, CounselingWriteActivity.class));
+                break;
+        }
     }
 
 
