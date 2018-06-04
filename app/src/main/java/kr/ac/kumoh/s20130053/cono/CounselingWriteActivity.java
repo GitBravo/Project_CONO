@@ -64,12 +64,12 @@ public class CounselingWriteActivity extends AppCompatActivity implements View.O
                 finish(); // 취소
                 break;
             case R.id.frag_counseling_write_center_btn:
-                if (center_btn.getText().equals("사진첨부")){
+                if (center_btn.getText().equals("사진첨부")) {
                     Intent intent = new Intent(Intent.ACTION_PICK);
                     intent.setType(MediaStore.Images.Media.CONTENT_TYPE);
                     intent.setData(MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                     startActivityForResult(intent, GET_GALLERY_IMAGE);
-                }else{
+                } else {
                     uri = null;
                     center_btn.setText("사진첨부");
                     center_btn.setTextColor(Color.BLACK);
@@ -95,8 +95,8 @@ public class CounselingWriteActivity extends AppCompatActivity implements View.O
                     db.collection("Hairshop").document(hairshop_token).collection("Comment").document(comment_id).set(item);
 
                     // 사진 파일 첨부되었다면, Firestorage 사진 파일 저장
-                    if(uri != null)
-                        new FirestorageImageManager().imageUpload(comment_id, uri);
+                    if (uri != null)
+                        new FireStorageImageManager().imageUpload("comment_image/", comment_id, uri);
 
                     Toast.makeText(this, R.string.counseling_write_complete, Toast.LENGTH_SHORT).show();
                     finish();

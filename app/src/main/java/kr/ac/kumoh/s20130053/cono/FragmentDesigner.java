@@ -19,16 +19,21 @@ import static kr.ac.kumoh.s20130053.cono.MainActivity.hairshop_token;
 
 public class FragmentDesigner extends android.support.v4.app.Fragment {
 
-    RecyclerView mRecyclerView;
-    RecyclerView.Adapter mAdapter;
-    RecyclerView.LayoutManager mLayoutManager;
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
 
-    ArrayList mArray;
-    View rootView;
+    private ArrayList mArray;
+    private View rootView;
+
+    private FireStorageImageManager fireStorageImageManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_designer, container, false);
+
+        // Firestorage 를 조작하기 위한 객체 할당
+        fireStorageImageManager = new FireStorageImageManager();
 
         // Item 리스트에 아이템 객체 넣기
         mArray = new ArrayList<>();
@@ -91,10 +96,9 @@ public class FragmentDesigner extends android.support.v4.app.Fragment {
         // 필수로 Generate 되어야 하는 메소드 2 : ListView의 getView 부분을 담당하는 메소드
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
-//            holder.imageView.setImageResource(mItems.get(position).cardview_image);
-//            holder.textView.setText(mItems.get(position).cardview_title);
             holder.titleTv.setText(((ClipData.Item) mItems.get(position)).getText());
             holder.infoTv.setText(((ClipData.Item) mItems.get(position)).getHtmlText());
+            fireStorageImageManager.imageDownload(rootView.getContext(), holder.imageView, "designer_image/","6te6dv9WdUUBsqliLzkF.png");
 
             setAnimation(holder.imageView, position);
         }
