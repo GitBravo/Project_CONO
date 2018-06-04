@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import static kr.ac.kumoh.s20130053.cono.MainActivity.hairshop_name;
 import static kr.ac.kumoh.s20130053.cono.SignInActivity.mAuth;
@@ -46,15 +47,21 @@ public class TabActivity extends AppCompatActivity implements View.OnClickListen
     private ActionBarDrawerToggle mToggle;
     private NavigationView navigationView;
 
+    private long time = 0; // Back 버튼 연속눌림 시간측정 변수
+
     @Override
     public void onBackPressed() {
-        // 드로워레이아웃이 열려있는 상태에서 Back 키 누르면 자동 닫힘
         mDrawerLayout = findViewById(R.id.drawer);
-        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+
+        // 드로워레이아웃이 열려있는 상태에서 Back 키 누르면 자동 닫힘
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START))
             mDrawerLayout.closeDrawer(GravityCompat.START);
-        } else {
+        else if (System.currentTimeMillis() - time >= 2000) {
+            // Back 버튼 연속 2회 눌러야 종료되도록 설정
+            time = System.currentTimeMillis();
+            Toast.makeText(getApplicationContext(), "뒤로 버튼을 한번 더 누르면 종료합니다.", Toast.LENGTH_SHORT).show();
+        } else if (System.currentTimeMillis() - time < 2000)
             super.onBackPressed();
-        }
     }
 
     @Override

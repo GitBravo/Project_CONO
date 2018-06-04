@@ -45,12 +45,22 @@ public class CounselingDetailActivity extends AppCompatActivity implements View.
      * 5. content */
 
     @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return super.onSupportNavigateUp();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_counseling_detail);
 
         if (hairshop_name != null)
             getSupportActionBar().setTitle(hairshop_name);
+
+        // SupportActionBar 에 Back 버튼 추가
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         /* FragmentCounseling 에서 보낸 String 데이터 Bundle 을 받아서 저장 */
         Bundle bundle = getIntent().getExtras();

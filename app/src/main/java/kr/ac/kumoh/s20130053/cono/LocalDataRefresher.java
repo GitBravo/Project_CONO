@@ -1,6 +1,5 @@
 package kr.ac.kumoh.s20130053.cono;
 
-import android.content.ClipData;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -129,7 +128,7 @@ public class LocalDataRefresher {
                 });
     }
 
-    protected void TryDesignerRefresh(final ArrayList array, final RecyclerView.Adapter adapter) {
+    protected void TryDesignerRefresh(final ArrayList<String[]> array, final RecyclerView.Adapter adapter) {
         array.clear();
         db.collection("Hairshop").document(mHairshopToken).collection("Designer").get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -137,7 +136,10 @@ public class LocalDataRefresher {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (DocumentSnapshot document : task.getResult()) {
-                                array.add(new ClipData.Item(String.valueOf(document.getData().get("name")), String.valueOf(document.getData().get("info"))));
+                                array.add(new String[]{
+                                        String.valueOf(document.getData().get("name")),
+                                        String.valueOf(document.getData().get("info")),
+                                        String.valueOf(document.getData().get("designer_id"))});
                             }
                             adapter.notifyDataSetChanged();
                         } else

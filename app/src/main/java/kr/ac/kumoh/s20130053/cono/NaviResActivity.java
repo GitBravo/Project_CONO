@@ -52,9 +52,41 @@ public class NaviResActivity extends AppCompatActivity {
 
         date = new Date(); // 현재 날짜 추출 및 비교하는 클래스
 
+        // 예약가능 및 불가 표시 (텍스트뷰)
+        undone_tv = findViewById(R.id.nav_res_undone);
+        done_tv = findViewById(R.id.nav_res_done);
+
+        // 예약 날짜 (텍스트뷰)
         mTextView = findViewById(R.id.nav_res_day);
         mTextView.setText(date.getCurrentYear()+"."+date.getCurrentMonth()+"."+date.getCurrentDay()); // 기본 날짜값 => 현재 날짜
 
+        // 예약 버튼
+        res_btn = findViewById(R.id.nav_res_btn);
+        res_btn.setEnabled(false);
+        res_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 예약버튼 클릭 시 Detail 다이얼로그 출력
+                dialog = new CustomDialogForRes(NaviResActivity.this,
+                        mTextView.getText().toString(),
+                        mTimeSpinner.getSelectedItem().toString(),
+                        mDesignerSpinner.getSelectedItem().toString());
+
+                // 예약에 성공했을 때, 내 예약정보 보여주는 액티비티로 인텐트
+                dialog.show();
+                dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialog_) {
+                        if (dialog.onSuccess()) {
+                            startActivity(new Intent(NaviResActivity.this, NaviMyResActivity.class));
+                            finish();
+                        }
+                    }
+                });
+            }
+        });
+
+        // 캘린더 뷰
         mCalendarView = findViewById(R.id.nav_res_calendarView);
         mCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
@@ -63,16 +95,12 @@ public class NaviResActivity extends AppCompatActivity {
                 if(date.isOverdue(year, month + 1, dayOfMonth) || mArray.isEmpty()) {
                     // 예약이 불가능한 경우 -> 버튼 비활성화
                     mTextView.setText(year + "." + (month + 1) + "." + dayOfMonth);
-                    undone_tv = findViewById(R.id.nav_res_undone);
-                    done_tv = findViewById(R.id.nav_res_done);
                     done_tv.setVisibility(View.GONE); // 예약 가능 숨기기
                     undone_tv.setVisibility(View.VISIBLE); // 예약 불가 표시
                     res_btn.setEnabled(false);
                 }else{
                     // 예약이 가능한 경우 -> 버튼 활성화
                     mTextView.setText(year + "." + (month + 1) + "." + dayOfMonth);
-                    undone_tv = findViewById(R.id.nav_res_undone);
-                    done_tv = findViewById(R.id.nav_res_done);
                     done_tv.setVisibility(View.VISIBLE); // 예약 가능 표시
                     undone_tv.setVisibility(View.GONE); // 예약 불가 숨기기
                     res_btn.setEnabled(true);
@@ -94,46 +122,23 @@ public class NaviResActivity extends AppCompatActivity {
                             if (mArray.isEmpty()) {
                                 // 만약 디자이너 목록을 가져올 수 없다면
                                 res_btn.setEnabled(false); // 예약 버튼 비활성화
-                                undone_tv = findViewById(R.id.nav_res_undone);
-                                done_tv = findViewById(R.id.nav_res_done);
                                 done_tv.setVisibility(View.GONE); // 예약 불가능 표시
                                 undone_tv.setVisibility(View.VISIBLE); // 예약 가능 숨기기
-                            }
+                            }else
+                                res_btn.setEnabled(true);
                         } else
-                            Log.d("TAG", "Error getting documents: ", task.getException());
+                            Log.d("NaviResActivity", "DB -> Spinner 데이터 할당에서 에러 발생", task.getException());
                     }
                 });
 
+        // 예약시간 스피너
         mAdapter = ArrayAdapter.createFromResource(this, R.array.TimeSpinner, android.R.layout.simple_spinner_dropdown_item);
         mTimeSpinner = findViewById(R.id.nav_res_TimeSpinner);
         mTimeSpinner.setAdapter(mAdapter);
 
+        // 디자이너 스피너
         mDesignerAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, mArray);
         mDesignerSpinner = findViewById(R.id.nav_res_DesignerSpinner);
         mDesignerSpinner.setAdapter(mDesignerAdapter);
-
-        res_btn = findViewById(R.id.nav_res_btn);
-        res_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // 예약버튼 클릭 시 Detail 다이얼로그 출력
-                dialog = new CustomDialogForRes(NaviResActivity.this,
-                        mTextView.getText().toString(),
-                        mTimeSpinner.getSelectedItem().toString(),
-                        mDesignerSpinner.getSelectedItem().toString());
-                dialog.show();
-
-                // 예약 정보 서버에 추가가 성공했을 때, 내 예약정보 보여주는 액티비티로 인텐트
-                dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-                    @Override
-                    public void onCancel(DialogInterface dialog_) {
-                        if (dialog.onSuccess()) {
-                            startActivity(new Intent(NaviResActivity.this, NaviMyResActivity.class));
-                            finish();
-                        }
-                    }
-                });
-            }
-        });
     }
 }

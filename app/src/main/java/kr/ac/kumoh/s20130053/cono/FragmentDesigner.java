@@ -1,6 +1,5 @@
 package kr.ac.kumoh.s20130053.cono;
 
-import android.content.ClipData;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -23,7 +22,7 @@ public class FragmentDesigner extends android.support.v4.app.Fragment {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
-    private ArrayList mArray;
+    private ArrayList<String[]> mArray;
     private View rootView;
 
     private FireStorageImageManager fireStorageImageManager;
@@ -73,15 +72,15 @@ public class FragmentDesigner extends android.support.v4.app.Fragment {
     }
 
     class MyCustomAdapter extends RecyclerView.Adapter<MyCustomAdapter.ViewHolder> {
-        private Context context;
-        private ArrayList mItems;
+        private Context mContext;
+        private ArrayList<String[]> mArray;
 
         // Allows to remember the last item shown on screen
         private int lastPosition = -1;
 
-        public MyCustomAdapter(ArrayList items, Context mContext) {
-            mItems = items;
-            context = mContext;
+        public MyCustomAdapter(ArrayList<String[]> items, Context context) {
+            this.mArray = items;
+            this.mContext = context;
         }
         // 필수로 Generate 되어야 하는 메소드 1 : 새로운 뷰 생성
 
@@ -96,9 +95,9 @@ public class FragmentDesigner extends android.support.v4.app.Fragment {
         // 필수로 Generate 되어야 하는 메소드 2 : ListView의 getView 부분을 담당하는 메소드
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
-            holder.titleTv.setText(((ClipData.Item) mItems.get(position)).getText());
-            holder.infoTv.setText(((ClipData.Item) mItems.get(position)).getHtmlText());
-            fireStorageImageManager.imageDownload(rootView.getContext(), holder.imageView, "designer_image/","6te6dv9WdUUBsqliLzkF.png");
+            holder.titleTv.setText(mArray.get(position)[0]);
+            holder.infoTv.setText(mArray.get(position)[1]);
+            fireStorageImageManager.imageDownload(rootView.getContext(), holder.imageView, "designer_image/",mArray.get(position)[2]);
 
             setAnimation(holder.imageView, position);
         }
@@ -106,7 +105,7 @@ public class FragmentDesigner extends android.support.v4.app.Fragment {
         // 필수로 Generate 되어야 하는 메소드 3
         @Override
         public int getItemCount() {
-            return mItems.size();
+            return mArray.size();
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
@@ -125,7 +124,7 @@ public class FragmentDesigner extends android.support.v4.app.Fragment {
         private void setAnimation(View viewToAnimate, int position) {
             // 새로 보여지는 뷰라면 애니메이션을 해줍니다
             if (position > lastPosition) {
-                Animation animation = AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left);
+                Animation animation = AnimationUtils.loadAnimation(mContext, android.R.anim.slide_in_left);
                 viewToAnimate.startAnimation(animation);
                 lastPosition = position;
             }

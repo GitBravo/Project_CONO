@@ -83,6 +83,7 @@
 
 
     <Button
+        android:theme="@style/MaterialFlatButton"
         android:id="@+id/dialog_res_detail_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

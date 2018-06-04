@@ -32,9 +32,9 @@ public class FireStorageImageManager {
         uploadTask = targetRef.putFile(localFileURI); // 로컬에 있는 파일을 서버로 업로드 진행
     }
 
-    public void imageDownload(Context context, final ImageView imageView, String ServerPath, String image_id) {
+    public void imageDownload(Context context, final ImageView imageView, String ServerPath, String fileName) {
         // 저장된 파일 위치로부터 참조객체 생성
-        storageRef = storage.getReferenceFromUrl("gs://cono-bf6c7.appspot.com/" + ServerPath + image_id);
+        storageRef = storage.getReferenceFromUrl("gs://cono-bf6c7.appspot.com/" + ServerPath + fileName);
 
         // Glide API 를 사용하여 복잡한 과정 없이 이미지뷰로 데이터 다운로드
         Glide.with(context /* context */)
@@ -60,8 +60,8 @@ public class FireStorageImageManager {
                 .into(imageView);
     }
 
-    public void imageDelete(String ServerPath, String image_id) {
-        StorageReference desertRef = storageRef.child(ServerPath + image_id);
+    public void imageDelete(String ServerPath, String fileName) {
+        StorageReference desertRef = storageRef.child(ServerPath + fileName);
         desertRef.delete();
     }
 }
