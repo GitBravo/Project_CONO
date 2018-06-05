@@ -8,8 +8,8 @@ android {
         multiDexEnabled true
         minSdkVersion 17
         targetSdkVersion 27
-        versionCode 10
-        versionName "0.20"
+        versionCode 11
+        versionName "0.25"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
