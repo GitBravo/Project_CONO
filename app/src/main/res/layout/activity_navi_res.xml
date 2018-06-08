@@ -86,7 +86,7 @@
             android:id="@+id/nav_res_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/MaterialFlatButton"
+            android:theme="@style/MaterialButton"
             android:text="@string/reservation"/>
 
     </LinearLayout>

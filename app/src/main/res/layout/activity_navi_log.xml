@@ -1,29 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NaviLogActivity">
-
-    <Button
+    android:layout_width="match_parent">
+    <TableLayout
+        android:id="@+id/nav_log_tableLayout"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/expenses_by_period"
-        />
+        tools:context=".NaviLogActivity"
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/expenses_by_shop"
-        />
+        android:background="#000000"
+        android:layout_margin="5dp">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/hair_history"
-        />
-
-</LinearLayout>
+        <TableRow>
+            <TextView
+                style="@style/TableItemStyle"
+                android:text="날짜"/>
+            <TextView
+                style="@style/TableItemStyle"
+                android:text="디자이너"/>
+            <TextView
+                style="@style/TableItemStyle"
+                android:text="구분"/>
+            <TextView
+                style="@style/TableItemStyle"
+                android:text="결제수단"/>
+            <TextView
+                style="@style/TableItemStyle"
+                android:text="결제금액"/>
+        </TableRow>
+    </TableLayout>
+</ScrollView>

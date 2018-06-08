@@ -6,7 +6,7 @@
     <string name="hairshop_select">헤어샵 선택</string>
     <string name="opt_str_hairshop_change">헤어샵 변경</string>
     <string name="opt_str_logout">로그아웃</string>
-    <string name="log">이력</string>
+    <string name="log">결제이력</string>
     <string name="reservation">예약하기</string>
     <string name="myReservation">내 예약</string>
     <string name="modify_info">회원정보</string>

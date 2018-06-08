@@ -89,7 +89,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:theme="@style/MaterialFlatButton"
+                android:theme="@style/MaterialButton"
                 android:text="덧글작성" />
 
         </LinearLayout>
