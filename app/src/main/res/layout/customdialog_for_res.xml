@@ -47,7 +47,7 @@
             android:id="@+id/dialog_res_day"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="null"
+            android:text="@string/isNull"
             android:textColor="#000"
             />
 
@@ -61,7 +61,7 @@
             android:id="@+id/dialog_res_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="null"
+            android:text="@string/isNull"
             android:textColor="#000"
             />
 
@@ -75,7 +75,7 @@
             android:id="@+id/dialog_res_designer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="null"
+            android:text="@string/isNull"
             android:textColor="#000"
             />
 

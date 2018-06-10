@@ -15,7 +15,7 @@
         android:id="@+id/dialog_comment_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="기존 본문이 삽입되는 곳"/>
+        android:text="@string/isNull"/>
 
     <android.support.design.widget.TextInputEditText
         android:id="@+id/edit_text"

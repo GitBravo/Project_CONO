@@ -17,7 +17,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
         <TextView
             android:layout_width="100dp"
             android:layout_height="wrap_content"
@@ -26,22 +25,19 @@
             android:layout_marginBottom="5dp"
             android:textSize="20sp"
             android:text="이름"/>
-
         <TextView
             android:id="@+id/nav_modify_displayName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#000"
             android:textSize="20sp"
-            android:text="정보없음"
-            />
+            android:text="@string/isNull" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
         <TextView
             android:layout_width="100dp"
             android:layout_height="wrap_content"
@@ -50,22 +46,19 @@
             android:layout_marginBottom="5dp"
             android:textSize="20sp"
             android:text="아이디"/>
-
         <TextView
             android:id="@+id/nav_modify_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#000"
             android:textSize="20sp"
-            android:text="정보없음"
-            />
+            android:text="@string/isNull" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
         <TextView
             android:layout_width="100dp"
             android:layout_height="wrap_content"
@@ -74,15 +67,75 @@
             android:layout_marginBottom="5dp"
             android:textSize="20sp"
             android:text="상담게시물"/>
-
         <TextView
             android:id="@+id/nav_modify_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#000"
             android:textSize="20sp"
-            android:text="정보없음"
-            />
+            android:text="@string/isNull" />
+    </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="20sp"
+            android:text="예약횟수"/>
+        <TextView
+            android:id="@+id/nav_modify_res"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:text="@string/isNull" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="20sp"
+            android:text="결제횟수"/>
+        <TextView
+            android:id="@+id/nav_modify_payment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:text="@string/isNull" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="20sp"
+            android:text="누적결제액"/>
+        <TextView
+            android:id="@+id/nav_modify_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:text="@string/isNull" />
     </LinearLayout>
 </LinearLayout>

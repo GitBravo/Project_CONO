@@ -102,6 +102,8 @@ public class FragmentDesigner extends android.support.v4.app.Fragment {
             setAnimation(holder.imageView, position);
         }
 
+
+
         // 필수로 Generate 되어야 하는 메소드 3
         @Override
         public int getItemCount() {

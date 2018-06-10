@@ -120,6 +120,7 @@ public class FragmentCounseling extends android.support.v4.app.Fragment {
         @NonNull
         @Override
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+            // 여기서 convertView 는 이전에 그려졌던 View 를 재활용한 객체
             ViewHolder vh;
             if (convertView == null) {
                 convertView = inf.inflate(R.layout.customlist_for_counseling, parent, false);

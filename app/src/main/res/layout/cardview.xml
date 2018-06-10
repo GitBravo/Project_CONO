@@ -27,7 +27,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="홍길동"
+            android:text="@string/isNull"
+            android:textSize="18sp"
             android:textStyle="bold"
             android:textAlignment="center"/>
 
@@ -35,7 +36,7 @@
             android:id="@+id/cardview_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="투블럭 공장장"
+            android:text="@string/isNull"
             android:textAlignment="center"/>
 
     </LinearLayout>
