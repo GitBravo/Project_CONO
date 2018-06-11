@@ -43,9 +43,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // test
         mArray = new ArrayList<>(); // 미용실 이름을 저장하는 리스트
         mToken = new ArrayList<>(); // 미용실 토큰을 저장하는 리스트
+        mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, mArray);
+
+        mBackupArray = new ArrayList<>(); // 검색 기능 구현을 위한 Array 백업 생성
+        mBackupToken = new ArrayList<>(); // 검색 기능 구현을 위한 Token 백업 생성
+
         // 기존의 콜렉션(테이블) 에 있는 데이터 중 다큐먼트(행) 값을 통해 필드(열) 값 추출 (추후에 아래 부분은 따로 클래스로 분리해둘것)
         db.collection("Hairshop").get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -57,11 +61,7 @@ public class MainActivity extends AppCompatActivity {
                                 mToken.add(String.valueOf(document.getId()));
                             }
                             mAdapter.notifyDataSetChanged(); // 데이터가 추가가 끝날 때 리스트뷰 갱신
-
-                            mBackupArray = new ArrayList<>(); // 검색 기능 구현을 위한 Array 백업 생성
                             mBackupArray.addAll(mArray);
-
-                            mBackupToken = new ArrayList<>(); // 검색 기능 구현을 위한 Token 백업 생성
                             mBackupToken.addAll(mToken);
                         } else
                             Log.d("TAG", "Error getting documents: ", task.getException());
@@ -69,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
                 });
 
         mList = findViewById(R.id.hairshoplist);
-        mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, mArray);
         mList.setAdapter(mAdapter);
         mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

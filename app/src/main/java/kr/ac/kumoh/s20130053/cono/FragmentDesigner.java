@@ -26,6 +26,7 @@ public class FragmentDesigner extends android.support.v4.app.Fragment {
     private View rootView;
 
     private FireStorageImageManager fireStorageImageManager;
+    private CustomDialogForDesigner dialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -52,8 +53,11 @@ public class FragmentDesigner extends android.support.v4.app.Fragment {
         mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getContext(), mRecyclerView, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                CustomDialogForDesigner dialog = new CustomDialogForDesigner(rootView.getContext(), mArray, position);// 여기서 아이템은 필요없고 포지션만 보내기
-                dialog.show();
+                // 아직 DB 에서 데이터를 가져오지 않았는데 다이얼로그를 실행하는 경우를 방지하기 위한 예외 if 문
+                if(mArray.size() > 0 && position < mArray.size()) {
+                    dialog = new CustomDialogForDesigner(rootView.getContext(), mArray, position);
+                    dialog.show();
+                }
             }
 
             @Override
