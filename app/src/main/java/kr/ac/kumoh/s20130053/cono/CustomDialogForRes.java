@@ -58,8 +58,7 @@ public class CustomDialogForRes extends Dialog {
             @Override
             public void onClick(View v) {
                 // 세부 예약 내용을 DB로 보내는 소스코드
-                RandomString randomString = new RandomString(); // 다큐먼트 id 생성을 위한 20자리 랜덤 난수(알파벳+숫자) 추출
-                String res_id = randomString.getRandomString(20);
+                String res_id = RandomString.getRandomString(20); // 다큐먼트 id 생성을 위한 20자리 랜덤 난수(알파벳+숫자) 추출
 
                 Map<String, Object> item = new HashMap<>();
                 item.put("id", mAuth.getCurrentUser().getEmail() + "");
@@ -77,11 +76,7 @@ public class CustomDialogForRes extends Dialog {
     }
 
     public boolean onSuccess(){
-        if (success) {
-            return true;
-        } else{
-            return false;
-        }
+        return success;
     }
 }
 

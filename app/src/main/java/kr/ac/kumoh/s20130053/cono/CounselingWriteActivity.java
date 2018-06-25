@@ -14,6 +14,7 @@ import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import static kr.ac.kumoh.s20130053.cono.MainActivity.db;
@@ -53,8 +54,7 @@ public class CounselingWriteActivity extends AppCompatActivity implements View.O
         right_btn.setOnClickListener(this); // 글작성
 
         // 다큐먼트 id 생성을 위한 랜덤 난수(알파벳+숫자) 추출
-        RandomString randomString = new RandomString();
-        comment_id = randomString.getRandomString(20);
+        comment_id = RandomString.getRandomString(20);
     }
 
     @Override
@@ -107,9 +107,8 @@ public class CounselingWriteActivity extends AppCompatActivity implements View.O
 
     public String getTimestamp() {
         long time = System.currentTimeMillis();
-        SimpleDateFormat dayTime = new SimpleDateFormat("yyyy.M.d");
-        String str = dayTime.format(new Date(time));
-        return str;
+        SimpleDateFormat dayTime = new SimpleDateFormat("yyyy.M.d", Locale.KOREA);
+        return dayTime.format(new Date(time));
     }
 
     @Override

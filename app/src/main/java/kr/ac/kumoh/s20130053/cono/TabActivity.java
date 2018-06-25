@@ -203,12 +203,9 @@ public class TabActivity extends AppCompatActivity implements View.OnClickListen
         }
 
         @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+        public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_hairshop, container, false);
-//            TextView textView = rootView.findViewById(R.id.section_label);
-//            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-            return rootView;
+            return inflater.inflate(R.layout.fragment_hairshop, container, false);
         }
     }
 

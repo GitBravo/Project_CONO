@@ -25,7 +25,7 @@ public class FragmentCounseling extends android.support.v4.app.Fragment {
     private View rootView;
 
     @Override
-    public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_counseling, container, false);
 
         mArray = new ArrayList<>();

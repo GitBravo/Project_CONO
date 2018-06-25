@@ -2,6 +2,7 @@ package kr.ac.kumoh.s20130053.cono;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
@@ -29,7 +30,7 @@ public class FragmentDesigner extends android.support.v4.app.Fragment {
     private CustomDialogForDesigner dialog;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_designer, container, false);
 
         // Firestorage 를 조작하기 위한 객체 할당
@@ -88,17 +89,17 @@ public class FragmentDesigner extends android.support.v4.app.Fragment {
         }
         // 필수로 Generate 되어야 하는 메소드 1 : 새로운 뷰 생성
 
+        @NonNull
         @Override
-        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             // 새로운 뷰를 만든다
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview, parent, false);
-            ViewHolder holder = new ViewHolder(view);
-            return holder;
+            return new ViewHolder(view);
         }
 
         // 필수로 Generate 되어야 하는 메소드 2 : ListView의 getView 부분을 담당하는 메소드
         @Override
-        public void onBindViewHolder(ViewHolder holder, int position) {
+        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
             holder.titleTv.setText(mArray.get(position)[0]);
             holder.infoTv.setText(mArray.get(position)[1]);
             fireStorageImageManager.imageDownload(rootView.getContext(), holder.imageView, "designer_image/",mArray.get(position)[2]);

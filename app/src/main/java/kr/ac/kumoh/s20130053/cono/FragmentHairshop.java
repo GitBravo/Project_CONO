@@ -1,6 +1,7 @@
 package kr.ac.kumoh.s20130053.cono;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +22,7 @@ public class FragmentHairshop extends android.support.v4.app.Fragment {
     TextView reprtAddress; // 대표자 주소
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_hairshop, container, false);
 
         intro = rootView.findViewById(R.id.frag_hairshop_intro);

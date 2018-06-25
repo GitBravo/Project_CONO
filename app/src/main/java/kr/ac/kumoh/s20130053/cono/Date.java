@@ -23,12 +23,9 @@ public class Date {
 
     public boolean isOverdue(int year, int month, int dayOfMonth){
         // 현재날짜와 인수로 입력된 날짜를 비교하여 이미 지나간 날짜면 true 를 반환한다.
-        if(year < getCurrentYear()
-                || (year == getCurrentYear() && month < getCurrentMonth())
-                || (year == getCurrentYear() && month == getCurrentMonth() && dayOfMonth < getCurrentDay()))
-            return true;
-        else
-            return false;
+            return year < getCurrentYear()
+                    || (year == getCurrentYear() && month < getCurrentMonth())
+                    || (year == getCurrentYear() && month == getCurrentMonth() && dayOfMonth < getCurrentDay());
     }
 
     public int[] getIntegerDate(String date){
@@ -43,11 +40,8 @@ public class Date {
     public boolean CompareLatestDate(String oldDate, String newDate){
         int []new_IntDate = getIntegerDate(newDate);
         int []old_IntDate = getIntegerDate(oldDate);
-        if(old_IntDate[0] < new_IntDate[0]
+        return old_IntDate[0] < new_IntDate[0]
                 || (old_IntDate[0] == new_IntDate[0] && old_IntDate[1] < new_IntDate[1])
-                || (old_IntDate[0] == new_IntDate[0] && old_IntDate[1] == new_IntDate[1] && old_IntDate[2] < new_IntDate[2]))
-            return true;
-        else
-            return false;
+                || (old_IntDate[0] == new_IntDate[0] && old_IntDate[1] == new_IntDate[1] && old_IntDate[2] < new_IntDate[2]);
     }
 }

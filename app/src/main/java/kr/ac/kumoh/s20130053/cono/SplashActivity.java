@@ -10,7 +10,7 @@ public class SplashActivity extends AppCompatActivity {
 
     // 로딩 화면이 떠있는 시간(밀리초단위)
 
-    private final int SPLASH_DISPLAY_LENGTH = 1500;
+    private static final int SPLASH_DISPLAY_LENGTH = 1500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

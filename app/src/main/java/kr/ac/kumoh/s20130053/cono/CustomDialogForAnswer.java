@@ -81,8 +81,7 @@ public class CustomDialogForAnswer extends Dialog implements View.OnClickListene
                     break;
                 } else {
                     // 여기부터 댓글 작성한 내용을 추출해서 DB로 보내는 소스코드
-                    RandomString randomString = new RandomString(); // 다큐먼트 id 생성을 위한 랜덤 난수(알파벳+숫자) 추출
-                    String Answer_id = randomString.getRandomString(20);
+                    String Answer_id = RandomString.getRandomString(20); // 다큐먼트 id 생성을 위한 랜덤 난수(알파벳+숫자) 추출
 
                     Map<String, Object> item = new HashMap<>();
                     item.put("id", mAuth.getCurrentUser().getEmail() + "");

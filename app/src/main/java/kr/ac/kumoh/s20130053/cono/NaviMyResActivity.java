@@ -86,6 +86,7 @@ public class NaviMyResActivity extends AppCompatActivity{
             this.item = object;
         }
 
+        @NonNull
         public View getView(final int position, View convertView, ViewGroup parent) {
             View v = convertView;
             if (v == null) {
